@@ -1,5 +1,11 @@
 const criptomonedasSelect = document.querySelector('#criptomonedas');
 
+// Crear un Promise
+const obtenerCriptomonedas = criptomonedas => new Promise(resolve =>{
+  resolve(criptomonedas);
+
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   consultarCriptomonedas();
 
@@ -10,5 +16,11 @@ function consultarCriptomonedas() {
 
   fetch(url)
     .then(respuesta => respuesta.json())
-    .then(resultado => console.log(resultado.Data))
+    .then(resultado => obtenerCriptomonedas(resultado.Data))
+    .then(criptomonedas => selectCriptomonedas(criptomonedas))
+
+}
+
+function selectCriptomonedas(monedas){
+  console.log(monedas);
 }
