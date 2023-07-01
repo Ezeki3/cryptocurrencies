@@ -21,6 +21,13 @@ function consultarCriptomonedas() {
 
 }
 
-function selectCriptomonedas(monedas){
-  console.log(monedas);
+function selectCriptomonedas(criptomonedas){
+  criptomonedas.forEach( cripto => {
+    const { FullName, Name} = cripto.CoinInfo;
+
+    const option = document.createElement('option');
+    option.value = Name;
+    option.textContent = FullName;
+    criptomonedasSelect.appendChild(option);
+  });
 }
