@@ -1,4 +1,11 @@
 const criptomonedasSelect = document.querySelector('#criptomonedas');
+const monedasSelect = document.querySelector('#monedas');
+const formulario = document.querySelector('#formulario');
+
+const objBusqueda = {
+  moneda: '',
+  criptomoneda: ''
+}
 
 // Crear un Promise
 const obtenerCriptomonedas = criptomonedas => new Promise(resolve =>{
@@ -8,6 +15,8 @@ const obtenerCriptomonedas = criptomonedas => new Promise(resolve =>{
 
 document.addEventListener('DOMContentLoaded', () => {
   consultarCriptomonedas();
+
+  formulario.addEventListener('submit', submitFormulario);
 
 })
 
@@ -30,4 +39,9 @@ function selectCriptomonedas(criptomonedas){
     option.textContent = FullName;
     criptomonedasSelect.appendChild(option);
   });
+}
+
+function submitFormulario(e){
+  e.preventDefault();
+  console.log("Enviado");
 }
