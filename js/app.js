@@ -1,5 +1,5 @@
 const criptomonedasSelect = document.querySelector('#criptomonedas');
-const monedasSelect = document.querySelector('#monedas');
+const monedasSelect = document.querySelector('#moneda');
 const formulario = document.querySelector('#formulario');
 
 const objBusqueda = {
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   formulario.addEventListener('submit', submitFormulario);
 
   criptomonedasSelect.addEventListener('change', leerValor);
+  monedasSelect.addEventListener('change', leerValor);
 })
 
 function consultarCriptomonedas() {
