@@ -50,5 +50,16 @@ function leerValor(e){
 
 function submitFormulario(e){
   e.preventDefault();
-  console.log("Enviado");
+
+  // Validacion
+  const {moneda, criptomoneda} = objBusqueda;
+  
+  if (moneda === '' || criptomoneda === '') {
+    mostrarAlerta('Ambos campos son obligatorios');
+    return;
+  }
+}
+
+function mostrarAlerta(mensaje){
+  console.log(mensaje);
 }
