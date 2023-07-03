@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   formulario.addEventListener('submit', submitFormulario);
 
+  criptomonedasSelect.addEventListener('change', leerValor);
 })
 
 function consultarCriptomonedas() {
@@ -39,6 +40,11 @@ function selectCriptomonedas(criptomonedas){
     option.textContent = FullName;
     criptomonedasSelect.appendChild(option);
   });
+}
+
+function leerValor(e){
+  objBusqueda[e.target.name] = e.target.value;
+  console.log(objBusqueda);
 }
 
 function submitFormulario(e){
