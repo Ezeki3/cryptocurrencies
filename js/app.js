@@ -86,5 +86,11 @@ function mostrarAlerta(mensaje){
 function consultarAPI(){
   const { moneda, criptomoneda }= objBusqueda;
 
-  const url = `https://min-api.cryptocompare.com/data/price?fsym=${criptomoneda}&tsyms=${moneda}`
+  const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+
+  fetch(url)
+  .then(respuesta => respuesta.json())
+  .then( cotizacion =>{
+    console.log(cotizacion);
+  })
 }
