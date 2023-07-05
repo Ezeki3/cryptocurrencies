@@ -91,6 +91,10 @@ function consultarAPI(){
   fetch(url)
   .then(respuesta => respuesta.json())
   .then( cotizacion =>{
-    console.log(cotizacion);
+    mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
   })
+}
+
+function mostrarCotizacionHTML(cotizacion){
+  console.log(cotizacion);
 }
