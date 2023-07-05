@@ -58,6 +58,10 @@ function submitFormulario(e){
     mostrarAlerta('Ambos campos son obligatorios');
     return;
   }
+
+  // Consultamos la API con los resultados
+  consultarAPI();
+
 }
 
 function mostrarAlerta(mensaje){
@@ -77,4 +81,10 @@ function mostrarAlerta(mensaje){
       divMensaje.remove();
     }, 3000);
   }
+}
+
+function consultarAPI(){
+  const { moneda, criptomoneda }= objBusqueda;
+
+  const url = `https://min-api.cryptocompare.com/data/price?fsym=${criptomoneda}&tsyms=${moneda}`
 }
