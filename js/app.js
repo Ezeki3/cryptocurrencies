@@ -1,6 +1,7 @@
 const criptomonedasSelect = document.querySelector('#criptomonedas');
 const monedasSelect = document.querySelector('#moneda');
 const formulario = document.querySelector('#formulario');
+const resultado = document.querySelector('#resultado');
 
 const objBusqueda = {
   moneda: '',
@@ -96,5 +97,11 @@ function consultarAPI(){
 }
 
 function mostrarCotizacionHTML(cotizacion){
-  console.log(cotizacion);
+  const {PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE} = cotizacion;
+
+  const precio = document.createElement('p');
+  precio.classList.add('precio');
+  precio.innerHTML = `El precio es:<span>${PRICE}</span>`;
+
+  resultado.appendChild(precio);
 }
