@@ -101,7 +101,23 @@ function mostrarCotizacionHTML(cotizacion){
 
   const precio = document.createElement('p');
   precio.classList.add('precio');
-  precio.innerHTML = `El precio es:<span>${PRICE}</span>`;
+  precio.innerHTML = `El precio es: <span>${PRICE}</span>`;
 
+  const precioAlto = document.createElement('p');
+  precioAlto.innerHTML = `El precio más alto del dia: <span>${HIGHDAY}</span>`;
+
+  const precioBajo = document.createElement('p');
+  precioBajo.innerHTML = `El precio más bajo del dia: <span>${LOWDAY}</span>`;
+
+  const ultimasHoras = document.createElement('p');
+  ultimasHoras.innerHTML = `Variación últimas 24 horas: <span>${CHANGEPCT24HOUR}%</span>`;
+
+  const utlimaActualizacion = document.createElement('p');
+  utlimaActualizacion.innerHTML = `Ultima actualización: <span>${LASTUPDATE}</span>`;
+  
   resultado.appendChild(precio);
+  resultado.appendChild(precioAlto);
+  resultado.appendChild(precioBajo);
+  resultado.appendChild(ultimasHoras);
+  resultado.appendChild(utlimaActualizacion);
 }
