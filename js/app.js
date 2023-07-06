@@ -46,7 +46,6 @@ function selectCriptomonedas(criptomonedas){
 
 function leerValor(e){
   objBusqueda[e.target.name] = e.target.value;
-  console.log(objBusqueda);
 }
 
 function submitFormulario(e){
@@ -97,6 +96,10 @@ function consultarAPI(){
 }
 
 function mostrarCotizacionHTML(cotizacion){
+  console.log(cotizacion);
+
+  limpiarHmtl();
+
   const {PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, LASTUPDATE} = cotizacion;
 
   const precio = document.createElement('p');
@@ -120,4 +123,10 @@ function mostrarCotizacionHTML(cotizacion){
   resultado.appendChild(precioBajo);
   resultado.appendChild(ultimasHoras);
   resultado.appendChild(utlimaActualizacion);
+}
+
+function limpiarHmtl(){
+  while(resultado.firstChild){
+    resultado.removeChild(resultado.firstChild);
+  }
 }
