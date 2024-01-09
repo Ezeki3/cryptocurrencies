@@ -23,14 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
   monedasSelect.addEventListener('change', leerValor);
 })
 
-function consultarCriptomonedas() {
+async function consultarCriptomonedas() {
   const url = ` https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD`
 
-  fetch(url)
-    .then(respuesta => respuesta.json())
-    .then(resultado => obtenerCriptomonedas(resultado.Data))
-    .then(criptomonedas => selectCriptomonedas(criptomonedas))
+  // fetch(url)
+  //   .then(respuesta => respuesta.json())
+  //   .then(resultado => obtenerCriptomonedas(resultado.Data))
+  //   .then(criptomonedas => selectCriptomonedas(criptomonedas))
 
+  try {
+    const respuesta = await fetch(url);
+    const resultado = await respuesta.json();
+    const criptomonedas = await obtenerCriptomonedas(resultado.Data);
+    selectCriptomonedas(criptomonedas);
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function selectCriptomonedas(criptomonedas){
@@ -83,21 +92,29 @@ function mostrarAlerta(mensaje){
   }
 }
 
-function consultarAPI(){
+async function consultarAPI(){
   const { moneda, criptomoneda }= objBusqueda;
 
   const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
   mostrarSpinner();
 
-  setTimeout(() => {
-    //metemos el fetch dentro del setTimeout para mostrar nuestro spinner
-    fetch(url)
-    .then(respuesta => respuesta.json())
-    .then( cotizacion =>{
-      mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
-    })
-  }, 2000);
+  // setTimeout(() => {
+  //   //metemos el fetch dentro del setTimeout para mostrar nuestro spinner
+  //   fetch(url)
+  //   .then(respuesta => respuesta.json())
+  //   .then( cotizacion =>{
+  //     mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
+  //   })
+  // }, 2000);
+
+  try {
+    const respuesta = await fetch(url);
+    const cotizacion = await respuesta.json();
+    mostrarCotizacionHTML(cotizacion.DISPLAY[criptomoneda][moneda]);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function mostrarCotizacionHTML(cotizacion){
